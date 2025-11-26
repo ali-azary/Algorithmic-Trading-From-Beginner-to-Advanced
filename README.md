@@ -1,4 +1,4 @@
-# Algorithmic Trading From Beginner to Advanced – Strategy Pack
+# Algorithmic Trading From Beginner to Advanced
 
 This repository contains a free mini-book and a curated pack of Backtrader strategies and utilities for learning and testing algorithmic trading ideas.
 
@@ -129,3 +129,123 @@ Located in `codes/`:
 
   ```python
   strategy = load_strategy("KeltnerBreakoutStrategy")
+````
+
+* **stress_testing.py**
+  Stress-testing framework for a chosen strategy:
+
+  * Runs a baseline backtest
+  * Applies multiple “what if” scenarios:
+
+    * Volatility shocks
+    * Transaction cost changes
+    * Parameter perturbations
+    * Flash crash style events, etc.
+  * Uses a custom `CustomPerformanceAnalyzer` to compute:
+
+    * Total return
+    * Annualized return and volatility
+    * Sharpe ratio
+    * Max drawdown
+    * Trade count and daily stats
+  * Prints a robustness summary and generates charts comparing scenarios to the baseline.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/algo-trading-strategy-pack.git
+   cd algo-trading-strategy-pack
+   ```
+
+2. (Optional but recommended) Create a virtual environment:
+
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # Windows: .venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## How to run a simple backtest
+
+1. Open `codes/backtest.py`.
+
+2. Set:
+
+   * `ticker` (e.g. `"BTC-USD"` or `"SPY"`),
+   * `start` and `end` dates,
+   * Strategy name in:
+
+   ```python
+   strategy = load_strategy("QuantileChannelStrategy")
+   ```
+
+3. Run:
+
+   ```bash
+   cd codes
+   python backtest.py
+   ```
+
+4. Check the terminal for performance metrics and the generated plots (equity curve and price).
+
+## Rolling backtests and stress tests
+
+* **Rolling backtest:**
+
+  ```bash
+  cd codes
+  python rolling_backtest.py
+  ```
+
+  Edit the script to:
+
+  * Choose `ticker`
+  * Set window length (e.g. 6-month or 12-month windows)
+  * Pick your strategy via `load_strategy(...)`
+
+* **Stress testing:**
+
+  ```bash
+  cd codes
+  python stress_testing.py
+  ```
+
+  Inside the script you can configure:
+
+  * Baseline setup (ticker, dates, strategy)
+  * List of stress test scenarios (e.g. higher fees, volatility shocks, crashes)
+
+## Book: Algorithmic Trading From Beginner to Advanced
+
+The PDF in `book/` is meant to be read alongside the code. It covers:
+
+* Basic Backtrader setup and architecture
+* Ideas behind each strategy (trend following, mean reversion, regime detection, ML filters, etc.)
+* How to interpret backtest metrics and charts
+* How to extend or tweak the strategies for your own research
+
+## License
+
+Add your preferred license here (for example MIT, Apache-2.0, or Creative Commons for the PDF).
+
+Examples:
+
+* Code: MIT License
+* Book (PDF): Creative Commons Attribution-NonCommercial (CC BY-NC)
+
+Please choose and add an actual `LICENSE` file and a short note here.
+
+## Disclaimer
+
+All code and content in this repository are for educational and research purposes only.
+They are **not** financial advice. Use at your own risk.
+
+````
+
