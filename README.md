@@ -233,10 +233,6 @@ The PDF in `book/` is meant to be read alongside the code. It covers:
 
 ## License
 
-Add your preferred license here (for example MIT, Apache-2.0, or Creative Commons for the PDF).
-
-Examples:
-
 * Code: MIT License
 * Book (PDF): Creative Commons Attribution-NonCommercial (CC BY-NC)
 
